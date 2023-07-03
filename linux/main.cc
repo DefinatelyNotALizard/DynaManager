@@ -1,4 +1,6 @@
 #include "my_application.h"
+#include <glib.h>
+#include <gio/gio.h>
 
 int main(int argc, char** argv) {
   g_autoptr(MyApplication) app = my_application_new();
