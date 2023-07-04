@@ -17,11 +17,6 @@ class DynaManager extends StatelessWidget {
           backgroundColor: Colors.red,
         ),
         body: VaryingPage(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.red,
-          child: Icon(Icons.add)
-        ),
       ),
     );
   }
@@ -37,7 +32,50 @@ class VaryingPage extends StatefulWidget {
 class _VaryingPageState extends State<VaryingPage> {
 
   int _selectedIndex = 0;
+  List<Widget> _mainContainerOptions = <Widget>[
 
+    Container(
+      child: Icon(Icons.home, size: 30,),
+    ),
+    Container(
+      child: Icon(Icons.check_box, size: 30,),
+    ),
+    Container(
+      child: Icon(Icons.assignment, size: 30,),
+    ),
+    Container(
+      child: Icon(Icons.trending_up, size: 30,),
+    ),
+
+  ];
+
+  List<Widget> _fabIconOptions = <Widget> [
+
+    Icon(Icons.build, size: 20,),
+    Icon(Icons.add, size: 20,),
+    Icon(Icons.add, size: 20,),
+    Icon(Icons.add, size: 20,),
+
+  ];  
+
+  List<Widget> _fabActionMessage = <Widget> [
+
+    Text('Home screen configuration available with DynaManager Pro.'),
+    Text('Add ToDo item.'),
+    Text('Add project.'),
+    Text('Something or other.'),
+
+  ];  
+
+  List<String> _fabActionLabel = <String> [
+
+    'Get Pro',
+    'OK',
+    'OK',
+    'OK',
+
+  ];  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,8 +98,39 @@ class _VaryingPageState extends State<VaryingPage> {
             NavigationRailDestination(icon: Icon(Icons.trending_up), label: Text('Wallet')),
             ],
           ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+              width: MediaQuery.of(context).size.width * 0.9,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Colors.white,
+              ),
+              child: Center(
+                child: _mainContainerOptions.elementAt(_selectedIndex),
+              ),
+            ),
+          ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
+        child: _fabIconOptions.elementAt(_selectedIndex),
+        onPressed: () {ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: _fabActionMessage.elementAt(_selectedIndex),
+            action: SnackBarAction(
+              label: _fabActionLabel.elementAt(_selectedIndex),
+              onPressed: () {
+                //Get Pro
+              }
+            ),
+          ),
+        );
+        },
+      ),
+      
+
     );
   }
 }
