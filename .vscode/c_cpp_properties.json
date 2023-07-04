@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "linux-gcc-x64",
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/gtk-3.0",
@@ -12,12 +12,12 @@
                 "/usr/include/cairo",
                 "/usr/include/gdk-pixbuf-2.0",
                 "/usr/include/atk-1.0",
-                "/home/jacques/vcpkg/buildtrees/glib/src/glib-2-fa63404107.clean/gio"
+                "/usr/include/glib-2.0/gio"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c17",
-            "cppStandard": "gnu++17",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
             "intelliSenseMode": "linux-gcc-x64"
         }
     ],
