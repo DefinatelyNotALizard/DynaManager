@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart';
+import 'globals.dart';
+import 'home_page.dart';
+import 'home_fab.dart';
+import 'to_do_page.dart';
+import 'to_do_fab.dart';
+import 'project_page.dart';
+import 'project_fab.dart';
+import 'wallet_page.dart';
+import 'wallet_fab.dart';
 
 
-void main() => runApp(DynaManager());
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(DynaManager());
+  print(testInt);
+}
 
+String getItemTD(indexTD){
+  return todoItems[indexTD];
+}
 
 class DynaManager extends StatelessWidget {
   const DynaManager({super.key});
@@ -11,12 +26,16 @@ class DynaManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('DynaManager'),
-          backgroundColor: Colors.red,
+          backgroundColor: dynamiteRed,
+          title: Text(
+            'DynaManager',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-        body: VaryingPage(),
+        body:VaryingPage(),
       ),
     );
   }
@@ -31,106 +50,57 @@ class VaryingPage extends StatefulWidget {
 
 class _VaryingPageState extends State<VaryingPage> {
 
-  int _selectedIndex = 0;
+  
   List<Widget> _mainContainerOptions = <Widget>[
 
-    Container(
-      child: Icon(Icons.home, size: 30,),
-    ),
-    Container(
-      child: Icon(Icons.check_box, size: 30,),
-    ),
-    Container(
-      child: Icon(Icons.assignment, size: 30,),
-    ),
-    Container(
-      child: Icon(Icons.trending_up, size: 30,),
-    ),
+    HomePage(),
+
+    ToDoPage(),
+
+    ProjectPage(),
+
+    WalletPage()
 
   ];
 
-  List<Widget> _fabIconOptions = <Widget> [
+  List<Widget> _fabList = <Widget>[
+    
+    HomeFab(),
 
-    Icon(Icons.build, size: 20,),
-    Icon(Icons.add, size: 20,),
-    Icon(Icons.add, size: 20,),
-    Icon(Icons.add, size: 20,),
+    ToDoFab(),
 
-  ];  
+    ProjectFab(),
 
-  List<Widget> _fabActionMessage = <Widget> [
+    WalletFab(),
 
-    Text('Home screen configuration available with DynaManager Pro.'),
-    Text('Add ToDo item.'),
-    Text('Add project.'),
-    Text('Something or other.'),
+  ];
 
-  ];  
-
-  List<String> _fabActionLabel = <String> [
-
-    'Get Pro',
-    'OK',
-    'OK',
-    'OK',
-
-  ];  
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
         children: [
           NavigationRail(
-            selectedIndex: _selectedIndex,
-            selectedIconTheme: IconThemeData(color: Colors.red),
+            selectedIndex: selectedIndex,
+            selectedIconTheme: IconThemeData(color: dynamiteRed),
             unselectedIconTheme: IconThemeData(color: Colors.grey),
-            indicatorColor: Colors.red,
+            indicatorColor: dynamiteRed,
             onDestinationSelected: (int index){
               setState(() {
-                _selectedIndex = index;
+                selectedIndex = index;
               });
             },
             destinations: [
-            NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
-            NavigationRailDestination(icon: Icon(Icons.check_box), label: Text('To do')),
-            NavigationRailDestination(icon: Icon(Icons.assignment), label: Text('Projects')),
-            NavigationRailDestination(icon: Icon(Icons.trending_up), label: Text('Wallet')),
+              NavigationRailDestination(icon: Icon(Icons.home), label: Text('Home')),
+              NavigationRailDestination(icon: Icon(Icons.check_box), label: Text('To do')),
+              NavigationRailDestination(icon: Icon(Icons.assignment), label: Text('Projects')),
+              NavigationRailDestination(icon: Icon(Icons.trending_up), label: Text('Wallet')),
             ],
           ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(30, 20, 30, 20),
-              width: MediaQuery.of(context).size.width * 0.9,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.white,
-              ),
-              child: Center(
-                child: _mainContainerOptions.elementAt(_selectedIndex),
-              ),
-            ),
-          ),
+          Center(child: _mainContainerOptions.elementAt(selectedIndex),),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
-        child: _fabIconOptions.elementAt(_selectedIndex),
-        onPressed: () {ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: _fabActionMessage.elementAt(_selectedIndex),
-            action: SnackBarAction(
-              label: _fabActionLabel.elementAt(_selectedIndex),
-              onPressed: () {
-                //Get Pro
-              }
-            ),
-          ),
-        );
-        },
-      ),
-      
-
+      floatingActionButton: _fabList.elementAt(selectedIndex),
     );
   }
 }
