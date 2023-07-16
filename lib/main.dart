@@ -12,9 +12,12 @@ import 'wallet_fab.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
+  toDoLength = todoItems.length;
   runApp(DynaManager());
   print(testInt);
+  print(todoItems);
 }
+
 
 String getItemTD(indexTD){
   return todoItems[indexTD];
@@ -53,13 +56,13 @@ class _VaryingPageState extends State<VaryingPage> {
   
   List<Widget> _mainContainerOptions = <Widget>[
 
-    HomePage(),
+    Center(child: HomePage(),),
 
-    ToDoPage(),
+    ToDoPage(itemAdded: null,),//DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
 
-    ProjectPage(),
+    Center(child: ProjectPage(),),
 
-    WalletPage()
+    Center(child: WalletPage(),),
 
   ];
 
@@ -67,7 +70,7 @@ class _VaryingPageState extends State<VaryingPage> {
     
     HomeFab(),
 
-    ToDoFab(),
+    FABtodoNew(callback: () {  },),
 
     ProjectFab(),
 
@@ -97,7 +100,7 @@ class _VaryingPageState extends State<VaryingPage> {
               NavigationRailDestination(icon: Icon(Icons.trending_up), label: Text('Wallet')),
             ],
           ),
-          Center(child: _mainContainerOptions.elementAt(selectedIndex),),
+          _mainContainerOptions.elementAt(selectedIndex),
         ],
       ),
       floatingActionButton: _fabList.elementAt(selectedIndex),

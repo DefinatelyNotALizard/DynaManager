@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'globals.dart';
 
 
+String getItem(){
+  String item = todoItems[toDoIndex];
+  toDoIndex++;
+  return item;
+}
+
 class ToDoTile extends StatefulWidget {
   const ToDoTile({super.key});
 
@@ -11,7 +17,7 @@ class ToDoTile extends StatefulWidget {
 
 class _ToDoTileState extends State<ToDoTile> {
 
-  String _name = 'hello';
+  String _name = getItem();
   @override
   Widget build(BuildContext context) {
     return Container(
