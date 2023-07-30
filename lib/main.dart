@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'globals.dart';
 import 'home_page.dart';
-import 'home_fab.dart';
 import 'to_do_page.dart';
-import 'to_do_fab.dart';
 import 'project_page.dart';
-import 'project_fab.dart';
 import 'wallet_page.dart';
-import 'wallet_fab.dart';
 
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
   toDoLength = todoItems.length;
   runApp(DynaManager());
-  print(testInt);
-  print(todoItems);
 }
 
 
@@ -56,9 +50,9 @@ class _VaryingPageState extends State<VaryingPage> {
   
   List<Widget> _mainContainerOptions = <Widget>[
 
-    Center(child: HomePage(),),
+    HomePage(),
 
-    ToDoPage(itemAdded: null,),//DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
+    ToDoPage(),//DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
 
     Center(child: ProjectPage(),),
 
@@ -66,17 +60,6 @@ class _VaryingPageState extends State<VaryingPage> {
 
   ];
 
-  List<Widget> _fabList = <Widget>[
-    
-    HomeFab(),
-
-    FABtodoNew(callback: () {  },),
-
-    ProjectFab(),
-
-    WalletFab(),
-
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +72,9 @@ class _VaryingPageState extends State<VaryingPage> {
             unselectedIconTheme: IconThemeData(color: Colors.grey),
             indicatorColor: dynamiteRed,
             onDestinationSelected: (int index){
+              if(selectedIndex != 1){
+                toDoIndex = 0;
+              }
               setState(() {
                 selectedIndex = index;
               });
@@ -103,7 +89,6 @@ class _VaryingPageState extends State<VaryingPage> {
           _mainContainerOptions.elementAt(selectedIndex),
         ],
       ),
-      floatingActionButton: _fabList.elementAt(selectedIndex),
     );
   }
 }

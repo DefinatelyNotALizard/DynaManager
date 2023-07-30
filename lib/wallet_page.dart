@@ -20,7 +20,7 @@ class _WalletPageState extends State<WalletPage> {
         color: Colors.white,
       ),
       child: Center(
-        child:  Icon(Icons.trending_up, size: iconSize,),
+        child:  Icon(Icons.trending_up, size: iconSize, color: Colors.black),
       ),
     );
   }

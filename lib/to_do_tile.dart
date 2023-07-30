@@ -5,6 +5,7 @@ import 'globals.dart';
 String getItem(){
   String item = todoItems[toDoIndex];
   toDoIndex++;
+  print(item);
   return item;
 }
 
@@ -21,7 +22,7 @@ class _ToDoTileState extends State<ToDoTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+      margin: const EdgeInsets.fromLTRB(30, 20, 20, 0),
       padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
       width: MediaQuery.of(context).size.width * widthMultiplier,
       decoration: BoxDecoration(
