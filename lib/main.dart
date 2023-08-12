@@ -8,7 +8,6 @@ import 'wallet_page.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
-  toDoLength = todoItems.length;
   runApp(DynaManager());
 }
 
@@ -73,7 +72,7 @@ class _VaryingPageState extends State<VaryingPage> {
             indicatorColor: dynamiteRed,
             onDestinationSelected: (int index){
               if(selectedIndex != 1){
-                toDoIndex = 0;
+                
               }
               setState(() {
                 selectedIndex = index;
