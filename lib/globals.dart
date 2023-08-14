@@ -12,7 +12,7 @@ double widthMultiplier = 0.90;
 
 //ToDoPage utilities:
 List<String> todoItems = ['Hello', 'HelloWorld', 'Goodbye'];
-List<bool> doneItems = [false, false, false];
+List<bool> areItemsDone = [false, false, false];
 
 //NavRail utilities:
 int selectedIndex = 0;
