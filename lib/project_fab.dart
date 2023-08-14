@@ -14,7 +14,7 @@ class _ProjectFabState extends State<ProjectFab> {
   Widget build(BuildContext context) {
     return FloatingActionButton(
         backgroundColor: dynamiteRed,
-        child: Icon(Icons.add, size: 20, color: Colors.white,),
+        child: Icon(Icons.add, size: iconSize, color: Colors.white,),
         onPressed: () {ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Add project.'),

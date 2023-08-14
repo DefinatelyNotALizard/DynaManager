@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'globals.dart';
-import 'to_do_tile.dart';
 import 'home_page.dart';
+
 
 
 class ToDoPage extends StatefulWidget {
@@ -11,15 +11,7 @@ class ToDoPage extends StatefulWidget {
   State<ToDoPage> createState() => _ToDoPageState();
 }
 
-
-
 class _ToDoPageState extends State<ToDoPage> {
-
-  void addTodoItem(String item){
-    todoItems.add(item);
-    setState(() {
-    });
-  }
 
   TextEditingController _textEditingController = TextEditingController();
 
@@ -41,8 +33,10 @@ class _ToDoPageState extends State<ToDoPage> {
                 if(todoItems.length < 20){
                   // Get the text from the text field
                   String enteredText = _textEditingController.text;
-                  addTodoItem(enteredText);
+                  todoItems.add(enteredText);
+                  areItemsDone.add(false);
                   print(todoItems);
+                  setState(() {});
                 }else{
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -57,7 +51,6 @@ class _ToDoPageState extends State<ToDoPage> {
                   );
                 }
                 Navigator.pop(context);
-                print(toDoIndex);
               },
               child: Text('Submit'),
             ),
@@ -82,23 +75,43 @@ class _ToDoPageState extends State<ToDoPage> {
 
   @override
   Widget build(BuildContext context) {
-    //print(todoItems);
-    //print(toDoIndex);
-    //print(todoItems[toDoIndex]);
+
     return Expanded(
-      child:Row(
+      child: Row(
         children: [
           Expanded(
             child: ListView.builder(
               itemCount: todoItems.length,
               itemBuilder: (BuildContext context, int index){
                 print(index);
-                if (index < todoItems.length) {
-                  return ToDoTile();
-                } else {
-                  return null;
-                }
-                
+                print(todoItems[index]);
+                print(areItemsDone[index]);
+                return Padding(
+                  padding: EdgeInsets.fromLTRB(30, 20, 3, 0),
+                  child: ListTile(
+                    
+                    tileColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    title: Text(todoItems[index]),
+                    textColor: Colors.black,
+                    trailing: Checkbox(
+                      value: areItemsDone[index],
+                      onChanged: (bool? newValue){
+                        setState(() {
+                          areItemsDone[index] = newValue ?? false;
+                        });
+                      },
+                      checkColor: Colors.black,
+                      fillColor: MaterialStateColor.resolveWith((states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return Colors.black.withOpacity(0); // Change the unchecked color here
+                        }
+                        return Colors.black.withOpacity(0.5); // Default unchecked color
+                      }),
+                    )),
+                );
               }
             ),
           ),
@@ -106,20 +119,22 @@ class _ToDoPageState extends State<ToDoPage> {
             children: [
               Spacer(),
               Padding(
-                padding: EdgeInsets.fromLTRB(3,20,10,20),
+                padding: EdgeInsets.fromLTRB(20,20,10,20),
                 child: FloatingActionButton(
-                  backgroundColor: dynamiteRed,
-                  child: Icon(Icons.add, size: 20, color: Colors.white,),
-                  onPressed: () {
-                    showPopup(context);
-                  },
-                ),
-              ) 
+                backgroundColor: dynamiteRed,
+                child: Icon(Icons.add, size: iconSize, color: Colors.white,),
+                onPressed: () {
+                  showPopup(context);
+                },
+              ),
+              )
             ],
           )
         ],
       ),
-      
     );
   }
 }
+
+
+

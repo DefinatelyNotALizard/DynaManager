@@ -3,18 +3,17 @@ library dyna_manager.globals;
 import 'package:flutter/material.dart';
 
 
+//Global Look and feel:
+const Color containerColor = Colors.white;
 const Color dynamiteRed = Colors.red;
-const int testInt = 3;
-int selectedIndex = 0;
 double fontSize = 18;
-double iconSize = 30;
+double iconSize = 20;
 double widthMultiplier = 0.90;
-double heightMultiplier = 0.85;
-double widthDifference = 10;
-List<String> todoItems = ['1', '2', '3'];
-int toDoIndex = 0;
-int toDoLength = 0;
-double fabpadding = 1;
 
-Color containerColor = Colors.white;
+//ToDoPage utilities:
+List<String> todoItems = ['Hello', 'HelloWorld', 'Goodbye'];
+List<bool> areItemsDone = [false, false, false];
+
+//NavRail utilities:
+int selectedIndex = 0;
 
