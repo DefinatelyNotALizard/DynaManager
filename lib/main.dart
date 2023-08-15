@@ -28,7 +28,10 @@ class DynaManager extends StatelessWidget {
           backgroundColor: dynamiteRed,
           title: Text(
             'DynaManager',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Vina Sans'
+            ),
           ),
         ),
         body:VaryingPage(),
@@ -53,7 +56,7 @@ class _VaryingPageState extends State<VaryingPage> {
 
     ToDoPage(),//DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
 
-    Center(child: ProjectPage(),),
+    ProjectPage(),//DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
 
     Center(child: WalletPage(),),
 

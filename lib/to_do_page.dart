@@ -83,9 +83,9 @@ class _ToDoPageState extends State<ToDoPage> {
             child: ListView.builder(
               itemCount: todoItems.length,
               itemBuilder: (BuildContext context, int index){
-                print(index);
+                /* print(index);
                 print(todoItems[index]);
-                print(areItemsDone[index]);
+                print(areItemsDone[index]); */
                 return Padding(
                   padding: EdgeInsets.fromLTRB(30, 20, 3, 0),
                   child: ListTile(
@@ -94,7 +94,10 @@ class _ToDoPageState extends State<ToDoPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    title: Text(todoItems[index]),
+                    title: Text(
+                      todoItems[index],
+                      style: defaultText,
+                    ),
                     textColor: Colors.black,
                     trailing: Checkbox(
                       value: areItemsDone[index],
