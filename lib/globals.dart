@@ -12,6 +12,16 @@ double widthMultiplier = 0.90;
 TextStyle defaultText = GoogleFonts.roboto(
   color: Colors.black,
   fontSize: fontSize,
+  fontWeight: FontWeight.normal,
+);
+TextStyle titleText = GoogleFonts.roboto(
+  color: Colors.black,
+  fontSize: fontSize * 1.2,
+  fontWeight: FontWeight.bold,
+);
+TextStyle subTitleText = GoogleFonts.roboto(
+  color: Colors.black,
+  fontSize: fontSize * 1.1,
   fontWeight: FontWeight.bold,
 );
 
@@ -35,12 +45,12 @@ List<String> roadmarks = [
 ];
 List<int> roadmarkOwnsTasks = [2, 2, 2, 2, 3, 2, 1, 2, 1];
 List<String> tasks = [
-  "Cut thorns",
-  "Flatten ground",
-  "Find stones",
-  "Transport stones",
-  "Place stones",
-  "Backfill",
+  "Cut thorns", //Clear area
+  "Flatten ground", //
+  "Find stones", //Gather stones
+  "Transport stones", //
+  "Place stones", //Lay stones
+  "Backfill", ////Build wall ends here
   "Dig up hedges",
   "Remove debris",
   "Lay compost",
@@ -54,19 +64,19 @@ List<String> tasks = [
   "Cart off debris"
 ];
 List<bool> taskStatus = [
-  true,
-  true,
-  true,
-  true,
-  true,
-  true,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false, //Build wall ends here
   false,
   false,
   false,
   false,
   false,
   false,
-  false,
+  false, //Replace hedge ends here
   false,
   false,
   false,
