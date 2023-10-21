@@ -19,8 +19,11 @@ class _ProjectPageState extends State<ProjectPage> {
             child: ListView.builder(
                 itemCount: projects.length,
                 itemBuilder: (BuildContext context, int index) {
+                  //previousRoadmarks is an integer that is equal to the amount of roadmarks in List roadmarks that come before the ones in the project currently being loaded
                   int previousRoadmarks = 0;
+                  //previousTasks is similar to previousRoadmarks excep it applies to the List tasks
                   int previousTasks = 0;
+                  //The following if statement applies only when the project being loaded is the second or above
                   if (index > 0) {
                     previousRoadmarks = projectOwnsRoadmarks
                         .sublist(0, index)
@@ -29,14 +32,19 @@ class _ProjectPageState extends State<ProjectPage> {
                         .sublist(0, previousRoadmarks)
                         .reduce((value, element) => value + element);
                   }
+                  //currentTasks is tthe amount of tasks in the project
                   int currentTasks = roadmarkOwnsTasks
                       .sublist(previousRoadmarks,
                           previousRoadmarks + projectOwnsRoadmarks[index])
                       .reduce((value, element) => value + element);
+                  //List tasksInProject is self explanatory
                   List tasksInProject = tasks.sublist(
                       previousTasks, previousTasks + currentTasks);
+                  //completedTasks is the amount of tasks in the project that are completed, this is captain obvious, signing off.
                   int completedTasksDoomed = 0;
+                  //Counts the amount of roadmarks on the progress bar that are filled, it may in fact be obsolete, must investigate SOMETHING TO DO HERE!!!!!!!!!
                   int filledBalls = 0;
+                  //Here we increment completedTasks for every "true" we find in the List taskStatus (which stores bools matched by their index to the tasks list)
                   for (var taskBeingChecked = 0;
                       taskBeingChecked < tasksInProject.length;
                       taskBeingChecked++) {
@@ -44,7 +52,9 @@ class _ProjectPageState extends State<ProjectPage> {
                       completedTasksDoomed++;
                     }
                   }
+                  //Since compTaskDoo is doomed to be decremented after this, here i store it's initial state for later use
                   int completedTasks = completedTasksDoomed;
+                  //Here we increment filledBalls by chopping bit off completedtasks based on the current roadmark's required number of tasks, the remainder is used later
                   String roadmarkInProgressName =
                       "PlaceholderStringGetsChangedInTheNextForLoop";
                   int roadmarkInProgressIndex;
@@ -68,10 +78,13 @@ class _ProjectPageState extends State<ProjectPage> {
                       "PlaceholderStringGetsChangedInTheNextForLoop") {
                     roadmarkInProgressName = "All tasks Completed";
                   }
+                  //currentROT is the amount of tasks in the roadmark that the previous for loop stopped at because all the tasks in it were not labelled "true"
                   int currentROT = roadmarkOwnsTasks[filledBalls];
+                  //The following list is a list of ints representing the elements of roadmarkOwnsTasks that have been fulfilled   CHECK OBSOLESCENCE
                   List<int> completedRoadmarkTaskOwnership =
                       roadmarkOwnsTasks.sublist(0, filledBalls);
                   List currentTaskStats = [];
+                  //if there are some compleed roadmarks then take a segment from the middle of taskStatus else take it from the start
                   if (completedRoadmarkTaskOwnership.isNotEmpty) {
                     currentTaskStats = taskStatus.sublist(
                         completedRoadmarkTaskOwnership
