@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'globals.dart';
 import 'home_page.dart';
 
-
-
 class ToDoPage extends StatefulWidget {
   const ToDoPage({super.key});
 
@@ -12,7 +10,6 @@ class ToDoPage extends StatefulWidget {
 }
 
 class _ToDoPageState extends State<ToDoPage> {
-
   TextEditingController _textEditingController = TextEditingController();
 
   void showPopup(BuildContext context) {
@@ -30,23 +27,22 @@ class _ToDoPageState extends State<ToDoPage> {
           actions: [
             TextButton(
               onPressed: () {
-                if(todoItems.length < 20){
+                if (todoItems.length < 20) {
                   // Get the text from the text field
                   String enteredText = _textEditingController.text;
                   todoItems.add(enteredText);
                   areItemsDone.add(false);
-                  print(todoItems);
                   setState(() {});
-                }else{
+                } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Longer lists available with DynaManager Pro'),
+                      content:
+                          Text('Longer lists available with DynaManager Pro'),
                       action: SnackBarAction(
-                      label: 'Get Pro',
-                      onPressed: () {
-                        getPro();
-                      }
-                      ),
+                          label: 'Get Pro',
+                          onPressed: () {
+                            getPro();
+                          }),
                     ),
                   );
                 }
@@ -66,67 +62,67 @@ class _ToDoPageState extends State<ToDoPage> {
       },
     ).then((result) {
       // Handle the result of the dialog
-      if (result != null) {
-        print('Entered text: $result');
-        print('result');
-      }
+      if (result != null) {}
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Expanded(
       child: Row(
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: todoItems.length,
-              itemBuilder: (BuildContext context, int index){
-                print(index);
-                print(todoItems[index]);
-                print(areItemsDone[index]);
-                return Padding(
-                  padding: EdgeInsets.fromLTRB(30, 20, 3, 0),
-                  child: ListTile(
-                    
-                    tileColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    title: Text(todoItems[index]),
-                    textColor: Colors.black,
-                    trailing: Checkbox(
-                      value: areItemsDone[index],
-                      onChanged: (bool? newValue){
-                        setState(() {
-                          areItemsDone[index] = newValue ?? false;
-                        });
-                      },
-                      checkColor: Colors.black,
-                      fillColor: MaterialStateColor.resolveWith((states) {
-                        if (states.contains(MaterialState.selected)) {
-                          return Colors.black.withOpacity(0); // Change the unchecked color here
-                        }
-                        return Colors.black.withOpacity(0.5); // Default unchecked color
-                      }),
-                    )),
-                );
-              }
-            ),
+                itemCount: todoItems.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: EdgeInsets.fromLTRB(30, 20, 3, 0),
+                    child: ListTile(
+                        tileColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        title: Text(
+                          todoItems[index],
+                          style: defaultText,
+                        ),
+                        textColor: Colors.black,
+                        trailing: Checkbox(
+                          value: areItemsDone[index],
+                          onChanged: (bool? newValue) {
+                            setState(() {
+                              areItemsDone[index] = newValue ?? false;
+                            });
+                          },
+                          checkColor: Colors.black,
+                          fillColor: MaterialStateColor.resolveWith((states) {
+                            if (states.contains(MaterialState.selected)) {
+                              return Colors.black.withOpacity(
+                                  0); // Change the unchecked color here
+                            }
+                            return Colors.black
+                                .withOpacity(0.5); // Default unchecked color
+                          }),
+                        )),
+                  );
+                }),
           ),
           Column(
             children: [
               Spacer(),
               Padding(
-                padding: EdgeInsets.fromLTRB(20,20,10,20),
+                padding: EdgeInsets.fromLTRB(20, 20, 10, 20),
                 child: FloatingActionButton(
-                backgroundColor: dynamiteRed,
-                child: Icon(Icons.add, size: iconSize, color: Colors.white,),
-                onPressed: () {
-                  showPopup(context);
-                },
-              ),
+                  backgroundColor: dynamiteRed,
+                  child: Icon(
+                    Icons.add,
+                    size: iconSize,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    showPopup(context);
+                  },
+                ),
               )
             ],
           )
@@ -135,6 +131,3 @@ class _ToDoPageState extends State<ToDoPage> {
     );
   }
 }
-
-
-
