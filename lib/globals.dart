@@ -5,13 +5,24 @@ import 'package:google_fonts/google_fonts.dart';
 
 //Global Look and feel:
 const Color containerColor = Colors.white;
-const Color dynamiteRed = Colors.red;
+const Color dynamiteRed = Color(0xffff1100);
 double fontSize = 23;
 double iconSize = 20;
-double widthMultiplier = 0.90;
+double widthMultiplier = 0.9;
+double heightMultiplier = 0.8;
 TextStyle defaultText = GoogleFonts.roboto(
   color: Colors.black,
   fontSize: fontSize,
+  fontWeight: FontWeight.normal,
+);
+TextStyle defaultTextWhite = GoogleFonts.roboto(
+  color: Colors.white,
+  fontSize: fontSize,
+  fontWeight: FontWeight.normal,
+);
+TextStyle redButtonText = GoogleFonts.roboto(
+  color: Colors.red,
+  fontSize: fontSize * 0.9,
   fontWeight: FontWeight.normal,
 );
 TextStyle titleText = GoogleFonts.roboto(

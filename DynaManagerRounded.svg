@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="50" height="50"/>
+    <linearGradient id="color-0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.92411, 0, 0, 1.133753, -0.969666, -9.801811)" bx:pinned="true">
+      <title>Dynamite Red</title>
+      <stop style="stop-color: rgb(255, 0, 0);"/>
+    </linearGradient>
+    <linearGradient id="color-1" gradientUnits="userSpaceOnUse" bx:pinned="true">
+      <title>Grey</title>
+      <stop style="stop-color: rgb(125, 125, 125);"/>
+    </linearGradient>
+    <linearGradient id="color-2" gradientUnits="userSpaceOnUse" bx:pinned="true">
+      <stop style="stop-color: rgb(0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient id="color-3" gradientUnits="userSpaceOnUse" bx:pinned="true">
+      <stop style="stop-color: rgb(255, 255, 255);"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="500" style="fill: url('#color-3'); stroke: url('#color-3');" rx="23.55" ry="23.55"/>
+  <rect width="225.047" height="50" style="fill: url('#color-0'); stroke: url('#color-0');" x="24.953"/>
+  <rect width="50" height="500" style="stroke: url('#color-0'); fill: url('#color-0');" rx="25" ry="25"/>
+  <rect x="450" y="195.251" width="50" height="305.136" style="stroke: url('#color-0'); fill: url('#color-0');" rx="25" ry="25"/>
+  <rect y="450" width="99.91" height="50" style="fill: url('#color-0'); stroke: url('#color-0');" x="24.244"/>
+  <rect x="100.067" y="300" width="50.034" height="200" style="fill: url('#color-0'); stroke: url('#color-0');" transform="matrix(1, 0, 0.499662, 1, -149.931107, 0.000766)"/>
+  <path d="M 124.86 450.883 L 150 500 L 112.975 500 L 124.86 450.883 Z" style="fill: url('#color-0'); stroke: url('#color-0');" bx:shape="triangle 112.975 450.883 37.025 49.117 0.321 0 1@c5cbe08b"/>
+  <rect x="199.999" y="100" width="50" height="400" style="fill: url('#color-0'); stroke: url('#color-0');" transform="matrix(1, 0, -0.499081, 1, 250.001007, 0)"/>
+  <rect x="199.999" y="37.5" width="50" height="150" style="fill: url('#color-0'); stroke: url('#color-0');" transform="matrix(1, 0, -0.499081, 1, 168.716537, -37.5)"/>
+  <rect x="199.999" y="12.5" width="50" height="50" style="fill: url('#color-0'); stroke: url('#color-0');" transform="matrix(1, 0, -0.499081, 1, 56.239513, -12.5)"/>
+  <rect x="199.999" y="12.5" width="50" height="50" style="stroke: url('#color-0'); fill: url('#color-0');" transform="matrix(-1, 0, 0.499081, 1, 318.80643, 437.5)"/>
+  <path d="M 499.901 100 L 500 200 L 450.26 200 L 499.901 100 Z" style="stroke: url('#color-0'); fill: url('#color-0');" bx:shape="triangle 450.26 100 49.74 100 0.998 0 1@f7041353"/>
+  <rect x="695.726" y="12.5" width="173.932" height="50" style="stroke: url('#color-0'); fill: url('#color-0');" transform="matrix(1, 0, -0.499081, 1, -364.5336, 437.499969)"/>
+  <rect x="450" y="200.907" width="50" height="27.534" style="fill: url('#color-0'); stroke: url('#color-0');"/>
+</svg>
