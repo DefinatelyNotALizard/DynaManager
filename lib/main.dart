@@ -3,13 +3,15 @@ import 'globals.dart';
 import 'home_page.dart';
 import 'to_do_page.dart';
 import 'project_page.dart';
-import 'wallet_page.dart';
+import 'ledger_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(DynaManager());
 }
 
+//Just added this comment so flutlab thinks I've made some modifications, otherwise this code may be dormant for a little while, heheheheheheheheheheheheh
+// Just doing a bit more filibustering here on the 19/02/24 so my project stays intact
 String getItemTD(indexTD) {
   return todoItems[indexTD];
 }
@@ -44,15 +46,13 @@ class VaryingPage extends StatefulWidget {
 
 class _VaryingPageState extends State<VaryingPage> {
   List<Widget> _mainContainerOptions = <Widget>[
-    HomePage(),
+    HomePage(), //DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
 
     ToDoPage(), //DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
 
     ProjectPage(), //DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
 
-    Center(
-      child: WalletPage(),
-    ),
+    LedgerPage(), //DO NOT ENCLOSE IN A CENTER WIDGET, IT WILL BREAK, I MEAN TOTAL FAILIURE, DOES NOT WORK IN THE SLIGHTEST.
   ];
 
   @override

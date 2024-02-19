@@ -6,8 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 //Global Look and feel:
 const Color containerColor = Colors.white;
 const Color dynamiteRed = Color(0xffff1100);
+const Color inputGrey = Color(0xffe7e3e3);
 double fontSize = 23;
-double iconSize = 20;
+double iconSize = 25;
 double widthMultiplier = 0.9;
 double heightMultiplier = 0.8;
 TextStyle defaultText = GoogleFonts.roboto(
@@ -33,6 +34,11 @@ TextStyle titleText = GoogleFonts.roboto(
 TextStyle subTitleText = GoogleFonts.roboto(
   color: Colors.black,
   fontSize: fontSize * 1.1,
+  fontWeight: FontWeight.bold,
+);
+TextStyle indicatorText = GoogleFonts.roboto(
+  color: Colors.black,
+  fontSize: fontSize * 1.2,
   fontWeight: FontWeight.bold,
 );
 
@@ -93,5 +99,10 @@ List<bool> taskStatus = [
   false,
   false,
 ];
+
+//LedgerPage utilities
+List<String> transactionNames = ['Sold bike', 'Bought alocohol', 'Bought gold'];
+List<String> transactionTypes = ['R', 'P', 'I'];
+List<double> transactionNumbers = [500, -20.50, -156.28];
 //NavRail utilities:
 int selectedIndex = 0;
